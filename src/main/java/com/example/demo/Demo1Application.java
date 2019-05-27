@@ -59,7 +59,10 @@ public class Demo1Application {
 		// Pasta dos arquivos HGT
 		SRTMGL1Provider srtm = new SRTMGL1Provider( "H:/srtm/" );
 		hopper.setElevationProvider( srtm );
+		
+		System.out.println("Preparando...");
 		hopper.importOrLoad();
+		System.out.println("Fim da preparacao.");
 
 		/*
 		*			TESTES
@@ -77,9 +80,9 @@ public class Demo1Application {
 		// note: turn off instructions and calcPoints if you just need the distance or time 
 		// information to make calculation and transmission faster		
 		request.getHints().put( "instructions", true );
-		//request.getHints().put( "calc_points", true );
+		request.getHints().put( "calc_points", true );
 		
-		request.getHints().put( Parameters.Routing.BLOCK_AREA, "-22.81910709638592,-43.35776925086975,400" );
+		//request.getHints().put( Parameters.Routing.BLOCK_AREA, "-22.81910709638592,-43.35776925086975,400" );
 		
 		//request.setVehicle("generic").setWeighting("generic");
 		request.setVehicle("car").setWeighting("fastest");
@@ -101,7 +104,7 @@ public class Demo1Application {
 		request.addPoint( to );
 		
 		
-		
+		System.out.println("Calculando a rota...");
 		GHResponse response =  hopper.route(request);
 		
 		// use the best path, see the GHResponse class for more possibilities.
@@ -143,6 +146,7 @@ public class Demo1Application {
 		List<GPXEntry> list = il.createGPXList();
 		System.out.println( list );
 
+		System.out.println("Fim.");
 		
 		
 	}	
