@@ -16,7 +16,6 @@ import com.graphhopper.routing.util.EncodingManager;
 import com.graphhopper.util.GPXEntry;
 import com.graphhopper.util.InstructionList;
 import com.graphhopper.util.Parameters;
-import com.graphhopper.util.Parameters.Routing;
 import com.graphhopper.util.PointList;
 import com.graphhopper.util.shapes.GHPoint;
 
@@ -48,7 +47,7 @@ public class Demo1Application {
 		GraphHopper hopper = new GraphHopperOSM().forServer();
 		hopper.setDataReaderFile( "H:/teste-rota/osm/" + mapName + ".osm.pbf" );		
 		
-		//hopper.setCHEnabled( false ); 
+		//hopper.setCHEnabled( true ); 
 		hopper.setCHEnabled( false );
 		hopper.setEnableCalcPoints( true );
 		hopper.setAllowWrites( true );
@@ -80,10 +79,10 @@ public class Demo1Application {
 		request.getHints().put( "instructions", true );
 		//request.getHints().put( "calc_points", true );
 		
-		request.getHints().put( Parameters.Routing.BLOCK_AREA, "-22.819186209415676,-43.32205295562745,900" );
+		request.getHints().put( Parameters.Routing.BLOCK_AREA, "-22.81910709638592,-43.35776925086975,400" );
 		
 		//request.setVehicle("generic").setWeighting("generic");
-		request.setVehicle("car").setWeighting("generic");
+		request.setVehicle("car").setWeighting("fastest");
 		
 		
 		/*
@@ -96,7 +95,7 @@ public class Demo1Application {
 		request.setLocale( "pt_BR" );
 
 		GHPoint from = new GHPoint( -22.777923,-43.361235 );
-		GHPoint to = new GHPoint( -22.892465,-43.432903 );
+		GHPoint to = new GHPoint( -22.845884,-43.361149 );
 		
 		request.addPoint( from );
 		request.addPoint( to );
